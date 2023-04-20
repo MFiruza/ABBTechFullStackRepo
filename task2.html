@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dana's Dishes</title>
+</head>
+<body>
+  <h1>Dana's Dishes</h1>
+  <form id="dish-form">
+    <h2>Recipe</h2>
+    <textarea id="recipe" rows="5" cols="30">{"flour": 500, "sugar": 200, "eggs": 1}</textarea>
+    <h2>Available Ingredients</h2>
+    <textarea id="ingredients" rows="5" cols="30">{"flour": 1200, "sugar": 1200, "eggs": 5, "milk": 200}</textarea>
+    <br>
+    <button type="button" onclick="calculateDishes()">Calculate Dishes</button>
+  </form>
+  <h2>Result:</h2>
+  <p id="result">-</p>
+
+  <script>
+    function dishes(recipe, ingredients) {
+      return Object.entries(recipe).reduce((maxDishes, [ingredient, requiredAmount]) => {
+        const availableAmount = ingredients[ingredient] || 0;
+        const possibleDishes = Math.floor(availableAmount / requiredAmount);
+        return Math.min(maxDishes, possibleDishes);
+      }, Infinity);
+    }
+
+    function calculateDishes() {
+      const recipeInput = document.getElementById('recipe');
+      const ingredientsInput = document.getElementById('ingredients');
+      const resultElement = document.getElementById('result');
+
+      const recipe = JSON.parse(recipeInput.value);
+      const ingredients = JSON.parse(ingredientsInput.value);
+
+      const result = dishes(recipe, ingredients);
+      resultElement.textContent = result;
+    }
+  </script>
+</body>
+</html>

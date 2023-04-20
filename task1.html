@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .services {
+            max-width: 1160px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .tabs ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tab {
+            background-color: #f1f1f1;
+            border: none;
+            color: #333;
+            cursor: pointer;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            text-align: center;
+            transition: background-color 0.2s ease;
+        }
+
+        .tab:hover {
+            background-color: #18CFAB;
+        }
+
+        .tab-content {
+            display: none;
+
+
+        }
+
+        .tab-content img {
+            max-width: 100%;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="services">
+        <h2>Our Services</h2>
+        <nav class="tabs">
+            <ul>
+                <li class="tab" data-index="0">Web Design</li>
+                <li class="tab" data-index="1">Graphic Design</li>
+                <li class="tab" data-index="2">Online Support</li>
+                <li class="tab" data-index="3">App Design</li>
+                <li class="tab" data-index="4">Online Marketing</li>
+                <li class="tab" data-index="5">SEO Services</li>
+            </ul>
+        </nav>
+        <div class="content">
+            <div class="tab-content active">
+                <img src="img/webdesign.jpg" alt="Web Design">
+                <p>Web Design: We create stunning and responsive websites tailored to your needs and preferences.</p>
+            </div>
+            <div class="tab-content">
+                <img src="img/grfd1.png" alt="Graphic Design">
+                <p>Graphic Design: Our talented designers craft visually appealing designs for branding, marketing
+                    materials, and more.</p>
+            </div>
+            <div class="tab-content">
+                <img src="img/online support.avif" alt="Online Support">
+                <p>Online Support: We provide reliable and professional online support to address any technical issues
+                    you may face.</p>
+            </div>
+            <div class="tab-content">
+                <img src="img/appdesign.png" alt="App Design">
+                <p>App Design: Our app design team specializes in creating user-friendly and engaging mobile
+                    applications for various platforms.</p>
+            </div>
+            <div class="tab-content">
+                <img src="img/onm1.png" alt="Online Marketing">
+                <p>Online Marketing: We help you reach your target audience and achieve your business goals through
+                    effective online marketing strategies.</p>
+            </div>
+            <div class="tab-content">
+                <img src="img/seore1.png" alt="SEO Services">
+                <p>SEO Services: Our SEO experts optimize your website to improve its ranking on search engines and
+                    drive more organic traffic.</p>
+            </div>
+        </div>
+    </section>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.tab');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    const index = parseInt(this.getAttribute('data-index'));
+
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const tabContents = document.querySelectorAll('.tab-content');
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    tabContents[index].classList.add('active');
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>
